@@ -6,154 +6,146 @@
   <title>Store – Young Culture</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;800&display=swap" rel="stylesheet" />
-<style>
-  #subscriptionModal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    font-family: 'Urbanist', sans-serif;
-  }
+  <style>
+    #subscriptionModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      font-family: 'Urbanist', sans-serif;
+    }
 
-  .modal-content {
-    background: #fff;
-    padding: 2rem;
-    max-width: 400px;
-    width: 90%;
-    border: 2px solid #000;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 1.3rem;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .modal-content h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #000;
-    text-transform: uppercase;
-    margin: 0;
-    text-align: center;
-  }
-
-  .modal-content p {
-    font-size: 0.9rem;
-    color: #444;
-    text-align: center;
-    margin: 0;
-  }
-
-  .modal-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .modal-content input {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    border: 1.5px solid #000;
-    background: transparent;
-    color: #000;
-    font-weight: 500;
-    text-transform: uppercase;
-    outline: none;
-    box-sizing: border-box;
-  }
-
-  .modal-content input:focus {
-    border-color: #000;
-  }
-
-  .modal-content button {
-    width: 100%;
-    padding: 1rem;
-    background: #000;
-    color: #fff;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    box-sizing: border-box;
-  }
-
-  .modal-content button:hover {
-    background: #222;
-  }
-
-  @media (max-width: 360px) {
     .modal-content {
-      padding: 1.5rem;
+      background: #fff;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      border: 2px solid #000;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.3rem;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
     }
 
     .modal-content h2 {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #000;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0;
     }
 
     .modal-content p {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      color: #444;
+      text-align: center;
+      margin: 0;
+    }
+
+    .modal-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 0.95rem;
+      border: 1.5px solid #000;
+      background: transparent;
+      color: #000;
+      font-weight: 500;
+      text-transform: uppercase;
+      outline: none;
+      box-sizing: border-box;
     }
 
     .modal-content button {
-      font-size: 0.85rem;
+      width: 100%;
+      padding: 1rem;
+      background: #000;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
     }
-  }
-</style>
 
+    .modal-content button:hover {
+      background: #222;
+    }
+
+    @media (max-width: 360px) {
+      .modal-content {
+        padding: 1.5rem;
+      }
+
+      .modal-content h2 {
+        font-size: 1.3rem;
+      }
+
+      .modal-content p {
+        font-size: 0.85rem;
+      }
+
+      .modal-content button {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- 🚀 Subscription Modal -->
   <div id="subscriptionModal">
     <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
       <h2>Stay in the Drop</h2>
       <p>Join our newsletter and never miss a release.</p>
-      <form id="subscribeForm">
-        <input type="text" placeholder="Your name" required />
-        <input type="email" placeholder="Your email" required />
-        <button type="submit">Subscribe</button>
+<form id="subscribeForm" method="POST" action="https://api.web3forms.com/submit">
+  <input type="hidden" name="access_key" value="3a7e0042-9451-4644-bf29-1d9806ff8254" />
+  <input type="text" name="name" placeholder="Your name" required />
+  <input type="email" name="email" placeholder="Your email" required />
+  <input type="tel" name="phone" placeholder="Your phone number" required />
+  <button type="submit">Subscribe</button>
+</form>
+
       </form>
     </div>
   </div>
 
-  <!-- 🔥 Existing Page Content -->
-<header class="navbar">
-  <div class="nav-container">
-    <div class="nav-left">
-      <h1 class="logo">Young Culture</h1>
+  <!-- 🔥 Page Content -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <h1 class="logo">Young Culture</h1>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mobile-menu" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart 🛒 <span id="cart-count" class="cart-count">0</span></a>
+      </nav>
     </div>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav id="mobile-menu" class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="cart.html">Cart 🛒 <span id="cart-count" class="cart-count">0</span></a>
-    </nav>
-  </div>
-</header>
-
-
+  </header>
 
   <main class="store-page">
     <section class="store-header">
@@ -161,7 +153,7 @@
       <p class="store-subtext">Curated drops. No restocks. Only the bold survive.</p>
       <div class="store-divider"></div>
     </section>
-  
+
     <div class="store-controls">
       <div class="filter-buttons">
         <button onclick="filterProducts('All')">All</button>
@@ -180,118 +172,135 @@
         </select>
       </div>
     </div>
-  
+
     <div class="product-grid" id="product-list"></div>
   </main>
 
   <footer>
     <p>© 2025 Young Culture. Crafted for creators.</p>
   </footer>
-<script src="product-page.js"></script>
+
+  <script src="product-page.js"></script>
   <script src="products.js"></script>
   <script>
-  function toggleMenu() {
-    document.getElementById("mobile-menu").classList.toggle("active");
-  }
-
-  const container = document.getElementById("product-list");
-  let currentCategory = "All";
-  let currentSort = "default";
-
-  function renderProducts() {
-    let filtered = currentCategory === "All"
-      ? products
-      : products.filter(p => p.category === currentCategory);
-
-    switch (currentSort) {
-      case "price-asc":
-        filtered.sort((a, b) => a.price - b.price);
-        break;
-      case "price-desc":
-        filtered.sort((a, b) => b.price - a.price);
-        break;
-      case "name-asc":
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "default":
-      default:
-        filtered.sort((a, b) => a.id - b.id);
-        break;
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("active");
     }
 
-    container.innerHTML = "";
+    const container = document.getElementById("product-list");
+    let currentCategory = "All";
+    let currentSort = "default";
 
-    if (filtered.length === 0) {
-      container.innerHTML = `<p style="color:#aaa;">No products in this category.</p>`;
-      return;
+    function renderProducts() {
+      let filtered = currentCategory === "All"
+        ? products
+        : products.filter(p => p.category === currentCategory);
+
+      switch (currentSort) {
+        case "price-asc":
+          filtered.sort((a, b) => a.price - b.price);
+          break;
+        case "price-desc":
+          filtered.sort((a, b) => b.price - a.price);
+          break;
+        case "name-asc":
+          filtered.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        default:
+          filtered.sort((a, b) => a.id - b.id);
+      }
+
+      container.innerHTML = "";
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p style="color:#aaa;">No products in this category.</p>`;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <a href="product.html?id=${p.id}">
+            <img src="${p.image}" alt="${p.name}">
+          </a>
+          <h3>${p.name}</h3>
+          <p>$${p.price.toFixed(2)}</p>
+          <button onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>
+        `;
+        container.appendChild(card);
+      });
     }
 
-    filtered.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <a href="product.html?id=${p.id}">
-          <img src="${p.image}" alt="${p.name}">
-        </a>
-        <h3>${p.name}</h3>
-        <p>$${p.price.toFixed(2)}</p>
-        <button onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>
-      `;
-      container.appendChild(card);
-    });
-  }
-
-  function filterProducts(category) {
-    currentCategory = category;
-    renderProducts();
-  }
-
-  function sortProducts(option) {
-    currentSort = option;
-    renderProducts();
-  }
-
-  function addToCart(product, price) {
-    const cart = JSON.parse(localStorage.getItem("dropculture-cart")) || [];
-    cart.push({ product, price });
-    localStorage.setItem("dropculture-cart", JSON.stringify(cart));
-    updateCartCounter();
-    alert(`${product} added to cart.`);
-  }
-
-  function updateCartCounter() {
-    const cart = JSON.parse(localStorage.getItem("dropculture-cart")) || [];
-    const counter = document.getElementById("cart-count");
-    if (counter) {
-      counter.textContent = cart.length;
-      counter.style.display = cart.length > 0 ? "inline-block" : "none";
+    function filterProducts(category) {
+      currentCategory = category;
+      renderProducts();
     }
-  }
 
-  function closeModal() {
-    document.getElementById("subscriptionModal").style.display = "none";
-    localStorage.setItem("dropculture_subscribed", "true");
-  }
+    function sortProducts(option) {
+      currentSort = option;
+      renderProducts();
+    }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    updateCartCounter();
-    renderProducts();
+    function addToCart(product, price) {
+      const cart = JSON.parse(localStorage.getItem("dropculture-cart")) || [];
+      cart.push({ product, price });
+      localStorage.setItem("dropculture-cart", JSON.stringify(cart));
+      updateCartCounter();
+      alert(`${product} added to cart.`);
+    }
 
-    const alreadySubscribed = localStorage.getItem("dropculture_subscribed");
-    if (!alreadySubscribed) {
-      document.getElementById("subscriptionModal").style.display = "flex";
-    } else {
+    function updateCartCounter() {
+      const cart = JSON.parse(localStorage.getItem("dropculture-cart")) || [];
+      const counter = document.getElementById("cart-count");
+      if (counter) {
+        counter.textContent = cart.length;
+        counter.style.display = cart.length > 0 ? "inline-block" : "none";
+      }
+    }
+
+    function closeModal() {
       document.getElementById("subscriptionModal").style.display = "none";
+      localStorage.setItem("dropculture_subscribed", "true");
     }
 
-    document.getElementById("subscribeForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartCounter();
+      renderProducts();
+
+      const alreadySubscribed = localStorage.getItem("dropculture_subscribed");
+      if (!alreadySubscribed) {
+        document.getElementById("subscriptionModal").style.display = "flex";
+      }
+
+      document.getElementById("subscribeForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
       alert("You're subscribed!");
       closeModal();
+      form.reset();
+    } else {
+      alert("Something went wrong: " + result.message);
+    }
+  } catch (error) {
+    alert("Error sending email.");
+    console.error(error);
+  }
+});
+
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
