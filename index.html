@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YD – Exclusive Creator Merch</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Header with Logo + Hamburger Left-Aligned -->
+<header class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <h1 class="logo">Young Culture</h1>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="mobile-menu" class="nav-links">
+        <a href="https://youngnigth.github.io/YD/blog.html">Blog</a>
+        <!-- <a href="#">Lookbook</a> -->
+        <a href="storev1.html">Store</a>
+        <a href="cart.html">Cart 🛒 <span id="cart-count" class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <h1>CREATOR. CURATOR. ICON.</h1>
+      <p>Limited drops designed for the bold. No compromises. No restocks.</p>
+      <a href="storev1.html" class="btn">Enter Store</a>
+    </div>
+  </section>
+
+  <!-- Editorial Section -->
+  <section class="editorial">
+    <h2>Essentials Reimagined</h2>
+    <p>Inspired by underground streetwear culture & minimalist design.</p>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1508835277982-1c1b0e205603?w=500&auto=format&fit=crop&q=60" alt="Drop 1" />
+      <img src="https://images.unsplash.com/photo-1546572797-e8c933a75a1f?w=500&auto=format&fit=crop&q=60" alt="Drop 2" />
+      <img src="https://images.unsplash.com/photo-1585846416120-3a7354ed7d39?w=500&auto=format&fit=crop&q=60" alt="Drop 3" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Young Culture. Crafted for creators.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("active");
+
+      // Optional: close menu when a link is clicked (mobile)
+      const links = menu.querySelectorAll("a");
+      links.forEach(link => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("active");
+        });
+      });
+    }
+
+    function updateCartCounter() {
+      const cart = JSON.parse(localStorage.getItem("dropculture-cart")) || [];
+      const counter = document.getElementById("cart-count");
+      if (counter) {
+        counter.textContent = cart.length;
+        counter.style.display = cart.length > 0 ? "inline-block" : "none";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartCounter);
+  </script>
+</body>
+</html>
