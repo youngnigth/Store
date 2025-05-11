@@ -125,6 +125,15 @@
   <input type="email" name="email" placeholder="Your email" required />
   <input type="tel" name="phone" placeholder="Your phone number" required />
   <button type="submit">Subscribe</button>
+  <div id="formStatus" style="text-align:center; font-size: 0.9rem; color: #333; margin-top: 0.5rem;"></div>
+<div id="spinner" style="display:none; text-align:center; margin-top: 1rem;">
+  <svg width="24" height="24" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="20" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" from="0 25 25" to="360 25 25" />
+    </circle>
+  </svg>
+</div>
+
 </form>
 
       </form>
@@ -272,12 +281,19 @@
       if (!alreadySubscribed) {
         document.getElementById("subscriptionModal").style.display = "flex";
       }
-
-      document.getElementById("subscribeForm").addEventListener("submit", async function (e) {
+document.getElementById("subscribeForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const form = e.target;
   const formData = new FormData(form);
+  const status = document.getElementById("formStatus");
+  const spinner = document.getElementById("spinner");
+  const button = form.querySelector("button");
+
+  // Show spinner & disable button
+  spinner.style.display = "block";
+  button.disabled = true;
+  status.textContent = "Sending...";
 
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
@@ -288,17 +304,29 @@
     const result = await response.json();
 
     if (response.ok && result.success) {
-      alert("You're subscribed!");
-      closeModal();
+      status.style.color = "green";
+      status.textContent = "🎉 You're subscribed!";
       form.reset();
+      setTimeout(() => {
+        closeModal();
+        spinner.style.display = "none";
+        button.disabled = false;
+        status.textContent = "";
+      }, 1500);
     } else {
-      alert("Something went wrong: " + result.message);
+      status.style.color = "red";
+      status.textContent = "❌ Error: " + result.message;
     }
   } catch (error) {
-    alert("Error sending email.");
+    status.style.color = "red";
+    status.textContent = "⚠️ Network error. Try again later.";
     console.error(error);
   }
+
+  spinner.style.display = "none";
+  button.disabled = false;
 });
+
 
     });
   </script>
